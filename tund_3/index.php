@@ -3,6 +3,10 @@
 	$name = "Sander";
 	$surname = "Hanni";
 	$todayDate = date("d.m.Y");
+	$weekDayNow = date("N");
+	$weekDayNamesET = ["esmaspäev", "Teisipäev", "kolmapäev", "neljapäev", "reede", "laupäev", "pühapäev"];
+	//var_dump  ($weekDayNamesET);
+	//echo $weekDayNamesET[0];
 	$hourNow = date("H");
 	//echo $hourNow;
 	$partOfDay = "";
@@ -17,7 +21,13 @@
 		$partOfDay = "Vaba aeg";
 	}
 
-
+	//Loosime juhusliku pildi
+	$picNum = mt_rand(2, 43);//random
+	//echo $picNum;'
+	$picURL = "http://www.cs.tlu.ee/~rinde/media/fotod/TLU_600x400/tlu_";
+	$picEXT = ".jpg";
+	$picFileName = $picURL .$picNum .$picEXT;
+	//echo $picFileName;
 ?>
 
 <!DOCTYPE html>
@@ -44,10 +54,11 @@
 		õppetöö raames valminud veebilehed, need ei hõlma sügavat sisu ja nende kopeerimine ei oma mõtet.</p>
 		
 		<p>Minu kaasüliõpilase veebi leiate 
-		<a href="../../~gertpak" target=_blank">siit</a>
+		<a href="../../../~gertpak/veebiprogrammeerimine/tund_3" target=_blank">siit</a>
 		.</p>
+		
 		<?php
-			echo "<p>Tänane kuupäev on: " .$todayDate ."</p> \n";
+			echo "<p>Täna on ".$weekDayNamesET[$weekDayNow - 1].", " .$todayDate ."</p> \n";
 			echo "<p>Lehe avamise hetkel oli kell: ".date("H:i") .". Käes on " .$partOfDay .".</p> \n";
 		
 		?>
@@ -56,15 +67,14 @@
 			alt=
 			"TLÜ Terra õppehoone">-->
 			<img src=
-				"../../~rinde/veebiprogrammeerimine2018s/tlu_terra_600x400_1.jpg" 
+				"../../../~rinde/veebiprogrammeerimine2018s/tlu_terra_600x400_1.jpg" 
 				alt=
 				"TLÜ Terra õppehoone">
-		<p> 
+		<p>
 		</p>
-			<img src=
-				"https://img.memecdn.com/html_o_207686.webp" 
-				alt=
-				"meme.html">
-		
+		<img src =
+			"<?php echo $picFileName; ?>"
+			alt = 
+			"Juhuslik pilt Tallinna ülikoolist">
 	</body>
 </html>
