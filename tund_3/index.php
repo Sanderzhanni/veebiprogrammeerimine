@@ -2,9 +2,12 @@
 	//echo "Siin on minu esimene PHP";
 	$name = "Sander";
 	$surname = "Hanni";
-	$todayDate = date("d.m.Y");
+	$todayDate = date("d");
+	$todayMonth = date("m");
+	$todayYear = date("Y");
 	$weekDayNow = date("N");
 	$weekDayNamesET = ["esmaspäev", "Teisipäev", "kolmapäev", "neljapäev", "reede", "laupäev", "pühapäev"];
+	$monthNamesET = ["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober", "november", "detsember"];
 	//var_dump  ($weekDayNamesET);
 	//echo $weekDayNamesET[0];
 	$hourNow = date("H");
@@ -58,9 +61,10 @@
 		.</p>
 		
 		<?php
-			echo "<p>Täna on ".$weekDayNamesET[$weekDayNow - 1].", " .$todayDate ."</p> \n";
+			echo "<p>Täna on ".$weekDayNamesET[$weekDayNow - 1].". " .$todayDate .". ".$monthNamesET[$todayMonth - 1] .". " .$todayYear .".</p> \n";
 			echo "<p>Lehe avamise hetkel oli kell: ".date("H:i") .". Käes on " .$partOfDay .".</p> \n";
 		
+	
 		?>
 		<!--<img src=
 			"http://greeny.cs.tlu.ee/~rinde/veebiprogrammeerimine2018s/tlu_terra_600x400_1.jpg" 

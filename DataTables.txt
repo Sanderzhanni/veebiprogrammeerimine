@@ -1,0 +1,5 @@
+Anonüümsed sõnumid:
+
+CREATE TABLE `if18_sander_ha_1`.`vpamsg` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `message` VARCHAR(256) NOT NULL , `validator` INT(11) NULL , `valid` INT(1) NULL , `validated` TIMESTAMP NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+
