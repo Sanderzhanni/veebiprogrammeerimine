@@ -90,7 +90,7 @@
 	}
 	
 	if (empty($nameError) and empty($surnameError) and empty($birthMonthError) and empty($birthYearError) and empty($birthDayError) and empty($genderError) and empty($emailError) and empty($passwordError)){
-		$notice = signup($name,$surname,$birthDate, $gender, $email, $_POST["password"]);
+		$notice = signup($name,$surname,$birthDate, $email, $gender, $_POST["password"]);
 		echo $notice;
 	
 	}
@@ -138,9 +138,11 @@
 				echo " checked";
 				}
 			?>>
-			<Label>Mees  </Label><span>&nbsp;<?php echo $genderError;
-			?></span><br><br>
-
+			<Label>Mees  </Label><span><br><br><?php echo  $genderError;
+			?></span><br>
+			<br>
+			<br>
+			
 			 <label>Sünnipäev: </label>
 				  <?php
 					echo '<select name="birthDay">' ."\n";
@@ -189,15 +191,14 @@
 				<br>
 				
 				<Label>Salasõna:</Label><br>
-			<input name = "password" type = "password" value = "" ><span><?php echo $passwordError;
+			<input name = "password" type = "text" value = "" ><span><?php echo $passwordError;
 			?></span><br>
 				 <label>Korrake salasõna:</label><br>
 				 <input name="confirmpassword" type="password"><span><?php echo $confirmpasswordError; ?></span><br>
 				<br>
 				<input name = "submitUserData" type = "submit" value = "Loo kasutaja">
 			</form>
-			<br>
-		<a href="index.php">Tagasi</a>
+		
 		
 		
 		

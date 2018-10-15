@@ -21,6 +21,7 @@
 	$genderError= "";
 	$emailError = "";
 	$passwordError = "";
+	$confirmpasswordError = "";
 	
 	
 	//Kui on uue kasutaja loomise nuppu vajutatud
@@ -45,6 +46,13 @@
 	} else {
 		$genderError = " Palun märgi sugu!";
 	}
+	 if (!isset($_POST["password"]) or empty($_POST["password"])){
+	$passwordError = "Palun sisesta salasõna!";
+  } else {
+	  if(strlen($_POST["password"]) < 8){
+		  $passwordError = "Liiga lühike salasõna (sisestasite ainult " .strlen($_POST["password"]) ." märki).";
+	  }
+  }
 	
 	//Kontrollime sünniaega
 	
@@ -58,7 +66,8 @@
 	
 	if (isset($_POST["birthYear"])){
 		$birthYear = $_POST["birthYear"];
-	} 
+	}
+	
 	
 	//Kontrollin kuupäeva õigsust
 	
@@ -81,7 +90,7 @@
 	}
 	
 	if (empty($nameError) and empty($surnameError) and empty($birthMonthError) and empty($birthYearError) and empty($birthDayError) and empty($genderError) and empty($emailError) and empty($passwordError)){
-		$notice = signup($name,$surname,$birthDate, $email, $gender, $_POST["password"]);
+		$notice = signup($name,$surname,$birthDate, $gender, $email, $_POST["password"]);
 		echo $notice;
 	
 	}
@@ -184,6 +193,8 @@
 				<Label>Salasõna:</Label><br>
 			<input name = "password" type = "text" value = "" ><span><?php echo $passwordError;
 			?></span><br>
+				 <label>Korrake salasõna:</label><br>
+				 <input name="confirmpassword" type="password"><span><?php echo $confirmpasswordError; ?></span><br>
 				<br>
 				<input name = "submitUserData" type = "submit" value = "Loo kasutaja">
 			</form>

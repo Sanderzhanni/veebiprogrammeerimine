@@ -2,4 +2,10 @@ Anonüümsed sõnumid:
 
 CREATE TABLE `if18_sander_ha_1`.`vpamsg` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `message` VARCHAR(256) NOT NULL , `validator` INT(11) NULL , `valid` INT(1) NULL , `validated` TIMESTAMP NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
+kasutajad 
 
+CREATE TABLE `if18_sander_ha_1`.`vpusers` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `firstname` VARCHAR(30) NOT NULL , `lastname` VARCHAR(30) NOT NULL , `birthDate` DATE NOT NULL , `gender` INT(1) NOT NULL , `email` VARCHAR(100) NOT NULL , `password` VARCHAR(60) NOT NULL , `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+profiil
+
+CREATE TABLE `if18_sander_ha_1`.`vpuserprofiles` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `userid` INT(11) NOT NULL , `description` VARCHAR(2000) NOT NULL , `bgcolor` VARCHAR(7) NOT NULL , `txtcolor` VARCHAR(7) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;

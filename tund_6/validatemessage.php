@@ -12,9 +12,14 @@
 	  exit();
   }
   
-  if(isset($_GET["id"])){
+  if(isset($_GET["id"])) {
 	  $msg = readmsgforvalidation($_GET["id"]);
   }
+  if(isset($_POST["submitValidation"])){
+	$notice = "Muudatus salvestatud!";
+	$notice = validatemsg($_POST["id"],$_POST["validation"]);
+  }
+  
 ?>
 <!DOCTYPE html>
 <html>
