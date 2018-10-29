@@ -11,7 +11,8 @@
 	  header("Location: index.php");
 	  exit();
   }
-  
+  $mybgcolor = $_SESSION["bgColor"];
+  $mytxtcolor = $_SESSION["txtColor"];
   $messagesbyuser = readallvalidatedmessagesbyuser();
 ?>
 <!DOCTYPE html>

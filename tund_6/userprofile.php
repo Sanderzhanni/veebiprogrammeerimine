@@ -1,6 +1,6 @@
 <?php
  require("functions.php");
-
+	$notice = "";
  if(!isset($_SESSION["userId"])){
 	  header("Location: index.php");
 	  exit();
@@ -12,10 +12,10 @@
 	  exit();
   }
   
-  $mydescription = "Pole midagi lisatud";
-	$mybgcolor = "#FFFFFF";
-	$mytxtcolor = "#000000";
-  
+	$mydescription = "Pole midagi lisatud";
+	$mybgcolor = $_SESSION["bgColor"];
+	$mytxtcolor = $_SESSION["txtColor"];
+	
  if(isset($_POST["submitMessage"])){
 	 $notice = SaveChanges($_POST["description"],$_POST["bgcolor"],$_POST["txtcolor"]);
 	 $mydescription = $_POST["description"];
@@ -23,9 +23,12 @@
 	$mytxtcolor = $_POST["txtcolor"];
  }else {
 		$userDatas = loadData();
-		var_dump($userDatas);
-		if($userDatas["desc"] != ""){
-			$mydescription = $userDatas["desc"];
+		if($userDatas != "error") {
+			if($userDatas["desc"] != ""){
+				$mydescription = $userDatas["desc"];
+			}
+			$mybgcolor = $userDatas["bgcol"];
+			$mytxtcolor = $userDatas["txtcol"];
 		}
 	}
   

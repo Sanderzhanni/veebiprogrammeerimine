@@ -1,0 +1,36 @@
+<?php
+  require("functions.php");
+  //kui pole sisse loginud
+  
+  //kui pole sisselogitud
+  if(!isset($_SESSION["userId"])){
+	header("Location: index_3.php");
+    exit();	
+  }
+  
+  //väljalogimine
+  if(isset($_GET["logout"])){
+	session_destroy();
+	header("Location:  index_3.php");
+	exit();
+  } 
+  
+  $pageTitle = "Pealeht";
+  
+  require("header.php");
+?>
+
+
+	<p>See leht on valminud <a href="http://www.tlu.ee" target="_blank">TLÜ</a> õppetöö raames ja ei oma mingisugust, mõtestatud või muul moel väärtuslikku sisu.</p>
+	<hr>
+	<p>Olete sisse loginud nimega: <?php echo $_SESSION["userFirstName"] ." " .$_SESSION["userLastName"]; ?>. <b><a href="?logout=1">Logi välja!</a></b></p>
+	<ul>
+	  <li>Minu <a href="userprofile.php">kasutajaprofiil</a>.</li>
+	  <li>Süsteemi <a href="users.php">kasutajad</a>.</li>
+	  <li>Valideeri anonüümseid <a href="validatemsg.php">sõnumeid</a>.</li>
+	  <li>Valideeritud <a href="validatedmessages.php">sõnumid</a> kasutajate kaupa.</li>
+	  <li>Fotode <a href="photoUpload.php"> üleslaadimine</a>.</li>
+	</ul>
+	
+  </body>
+</html>

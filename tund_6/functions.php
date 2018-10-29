@@ -9,20 +9,23 @@ $database = "if18_sander_ha_1";
 session_start();
 
 
-function SaveChanges($description,$bgcolor,$txtcolor){
+function SaveChanges($description,$bgColor,$txtcolor){
 	$notice = "";
 	$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
 	$stmt = $mysqli->prepare("SELECT description, bgcolor, txtcolor FROM vpuserprofiles WHERE userid=?");
 	echo $mysqli->error;
+	$stmt->bind_param("i", $_SESSION["userID"]);
 	$stmt->bind_result($descriptionFromDb, $bgcolorFromDb, $txtcolorFromDb);
 	$stmt->execute();
 	if($stmt->fetch()){
-	$stmt->close();
+		$stmt->close();
 		$stmt = $mysqli->prepare("UPDATE vpuserprofiles SET description=?, bgcolor=?, txtcolor=? WHERE userid=?");
 		echo $mysqli->error;
 		$stmt->bind_param("sssi", $description, $bgcolor, $txtcolor, $_SESSION["userID"]);
 		if($stmt->execute()){
 			$notice = "Profiil uuendatud!";
+			$_SESSION["bgColor"] = $bgcolor;
+			$_SESSION["bgColor"] = $txtcolor;
 		} else {
 			$notice = "Profiili uuendamine ei õnnestunud!" .$stmt->error; 
 			
@@ -34,6 +37,8 @@ function SaveChanges($description,$bgcolor,$txtcolor){
 		$stmt->bind_param("isss", $_SESSION["userID"], $description, $bgcolor, $txtcolor);
 		if($stmt->execute()){
 			$notice = "Profiil uuendatud!";
+			$_SESSION["bgColor"] = $bgcolor;
+			$_SESSION["bgColor"] = $txtcolor;
 		} else {
 			$notice = "Profiili uuendamine ei õnnestunud! " .$stmt->error;
 		}
